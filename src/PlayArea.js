@@ -8,17 +8,34 @@ class PlayArea extends React.Component {
       squares: Array(9).fill(null),
       currentUser: "X",
       finished: false,
-      winner: null
+      winner: null,
+      mode: props.mode
     };
+  }
+
+  handleClick1P = (index) =>{
+    // sent to algorithm and return ideal val for current
+
+    console.log("Index at 1p mode: " + index);
+    const squares = this.state.squares;
+    if(squares[index] == null){
+      squares[index] = this.state.currentUser;
+      this.setState({ squares: squares });
+      if (this.state.currentUser === "X") this.setState({ currentUser: "O" });
+      else this.setState({ currentUser: "X" });
+    }
+    this.checkWinner(squares);
   }
 
   handleClick(index) {
     console.log("Index: " + index);
     const squares = this.state.squares;
-    squares[index] = this.state.currentUser;
-    this.setState({ squares: squares });
-    if (this.state.currentUser === "X") this.setState({ currentUser: "O" });
-    else this.setState({ currentUser: "X" });
+    if(squares[index] == null){
+      squares[index] = this.state.currentUser;
+      this.setState({ squares: squares });
+      if (this.state.currentUser === "X") this.setState({ currentUser: "O" });
+      else this.setState({ currentUser: "X" });
+    }
     this.checkWinner(squares);
   }
 
@@ -111,6 +128,15 @@ class PlayArea extends React.Component {
     }
   };
 
+  handleClickCallback = (index)=>{
+    if(this.state.mode === "2p"){
+      this.handleClick(index)
+    }
+    else{
+      this.handleClick1P(index)
+    }
+  }
+
   render() {
     return (
       <div className="play-area">
@@ -120,13 +146,18 @@ class PlayArea extends React.Component {
         </div>
         <Board
           squares={this.state.squares}
-          clickHandle={index => this.handleClick(index)}
+          clickHandle={index => this.handleClickCallback(index)}
           buttonStatus={this.state.finished}
         />
-        <button className="restart-button" onClick={() => this.resetBoard()}>
-          {" "}
-          Reset Game
-        </button>
+        <div className="restart-root">
+          <button className="restart-button" onClick={() => this.props.reset()}>
+              Back
+          </button>
+          <button className="restart-button" onClick={() => this.resetBoard()}>
+            {" "}
+            Reset Game
+          </button>
+        </div>
       </div>
     );
   }
