@@ -6,8 +6,7 @@ import PlayerMode from "./PlayerMode";
 
 function App() {
   return (
-    
-      <PlayerMode />
+    <PlayerMode />
   );
 }
 

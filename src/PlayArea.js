@@ -1,5 +1,7 @@
 import React from "react";
 import Board from "./Board";
+import "./MiniMax"
+import MiniMax from "./MiniMax";
 
 class PlayArea extends React.Component {
   constructor(props) {
@@ -14,15 +16,18 @@ class PlayArea extends React.Component {
   }
 
   handleClick1P = (index) =>{
-    // sent to algorithm and return ideal val for current
-
     console.log("Index at 1p mode: " + index);
     const squares = this.state.squares;
     if(squares[index] == null){
       squares[index] = this.state.currentUser;
       this.setState({ squares: squares });
-      if (this.state.currentUser === "X") this.setState({ currentUser: "O" });
-      else this.setState({ currentUser: "X" });
+      if (this.state.currentUser === "X"){
+        index = MiniMax(squares)
+        if(squares[index] == null){
+          squares[index] = "O"
+          this.setState({squares: squares,currentUser: "X"}) 
+        }
+      } 
     }
     this.checkWinner(squares);
   }
