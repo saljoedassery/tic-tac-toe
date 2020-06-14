@@ -1,16 +1,12 @@
 import React from "react";
 import "./App.css";
-import PlayArea from "./PlayArea";
+// import PlayArea from "./PlayArea";
+// import playermode from './PlayerMode'
+import PlayerMode from "./PlayerMode";
 
 function App() {
   return (
-    <div className="container">
-      <div className="heading">
-        <h1>Tic Tac Toe</h1>
-        <hr />
-      </div>
-      <PlayArea />
-    </div>
+    <PlayerMode />
   );
 }
 

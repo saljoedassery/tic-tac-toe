@@ -58,7 +58,6 @@ body {
 
 .board button:nth-child(5) {
   border: 6px solid #41a399;
-
 }
 
 .board button:nth-child(2) , .board button:nth-child(8){
@@ -85,8 +84,35 @@ body {
   text-transform: uppercase;
   color: rgb(152, 212, 187);
   font-weight: 700;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.restart-button:hover{
+  cursor: pointer;
 }
 
 .restart-button:focus {
   outline: none;
 }
+
+.mode-root{
+  display: flex;
+}
+
+.restart-root{
+  display: flex;
+  justify-content: center;
+}
+
+.mode-button{
+  color: green;
+  display: inline;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.mode-button:hover {
+  cursor: pointer;
+}
+
