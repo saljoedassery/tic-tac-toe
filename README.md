@@ -1,5 +1,5 @@
 
-## Live Demo
+### Live Demo
 
 To check the live demo visit: [live demo](https://saljoedassery.github.io/tic-tac-toe/)
 
