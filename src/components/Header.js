@@ -1,6 +1,6 @@
 import React from "react"
-import darkModeIcon from '../src/images/switch.png'
-import soundIcon from '../src/images/speaker.png'
+import darkModeIcon from '../images/switch.png'
+import soundIcon from '../images/speaker.png'
 
 class Header extends React.Component {
     render () {
