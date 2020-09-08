@@ -1,17 +1,14 @@
 import React from "react";
 import "./App.css";
+import Header from "./Header";
 import PlayArea from "./PlayArea";
 
 function App() {
-  return (
-    <div className="container">
-      <div className="heading">
-        <h1>Tic Tac Toe</h1>
-        <hr />
-      </div>
-      <PlayArea />
-    </div>
-  );
+    return ( 
+        <div className = "container" >
+        <Header />
+        <PlayArea />
+        </div>
+    );
 }
-
 export default App;

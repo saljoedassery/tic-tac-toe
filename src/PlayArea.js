@@ -1,5 +1,6 @@
 import React from "react";
 import Board from "./Board";
+import Controls from "./Controls";
 
 class PlayArea extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class PlayArea extends React.Component {
       squares: Array(9).fill(null),
       currentUser: "X",
       finished: false,
-      winner: null
+      winner: null,
+      players: 1
     };
   }
 
@@ -33,8 +35,6 @@ class PlayArea extends React.Component {
   };
 
   checkWinner = squares => {
-    console.log(squares);
-
     if (
       squares[0] === squares[1] &&
       squares[1] === squares[2] &&
@@ -111,22 +111,21 @@ class PlayArea extends React.Component {
     }
   };
 
+  changePlayerNumber = () => {
+    this.setState({players:(this.state.players % 2) + 1})
+  }
+
   render() {
+    const winner = this.state.winner !== null ? "Winner is " + this.state.winner : ""
     return (
       <div className="play-area">
-        <div className="game-details">
-          <p>Current Player : {this.state.currentUser}</p>
-          {this.getResult()}
-        </div>
+        <label className="winner">{winner}</label>
         <Board
           squares={this.state.squares}
           clickHandle={index => this.handleClick(index)}
           buttonStatus={this.state.finished}
         />
-        <button className="restart-button" onClick={() => this.resetBoard()}>
-          {" "}
-          Reset Game
-        </button>
+        <Controls resetBoard = {this.resetBoard} togglePlayers = {this.changePlayerNumber} players = {this.state.players}/>
       </div>
     );
   }
