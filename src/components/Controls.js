@@ -4,6 +4,7 @@ import restartGame from "../images/refresh.png";
 
 class Controls extends React.Component {
   render() {
+    var secondPlayer = this.props.players === 1 ? "Computer" : "Player 2"
     return (
       <div className="controls">
         <div className="payer-one">
@@ -13,7 +14,7 @@ class Controls extends React.Component {
           <img src={switchPlayer} alt="switch-player-icon" onClick={this.props.switchPlayer}/>
         </div>
         <div className="payer-two">
-          <p> Player 2({this.props.player2}) </p>
+          <p> {secondPlayer}({this.props.player2}) </p>
         </div>
         <div className="payer-number">
           <button className="player-number-button" onClick={this.props.togglePlayers}>{this.props.players}</button>
